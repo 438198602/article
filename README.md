@@ -8,21 +8,32 @@
 
 <summary> 目录 </summary>
 
+* [git 常用命令](https://github.com/lvzhenbang/article/blob/master/git/git-command.md)
+* [git 分支操作](https://github.com/lvzhenbang/article/blob/master/git/git-branch.md)
+* [git 提交记录操作](https://github.com/lvzhenbang/article/blob/master/git/git-commit.md)
+* [git merge vs rebase）](https://github.com/lvzhenbang/article/blob/master/git/git-merge.md)
+* [git 打标签](https://github.com/lvzhenbang/article/blob/master/git/git-tag.md)
 * [git repository](https://github.com/lvzhenbang/article/blob/master/git/git-repository.md)
-* [git常用命令](https://github.com/lvzhenbang/article/blob/master/git/git-command.md)
-* [git分支操作](https://github.com/lvzhenbang/article/blob/master/git/git-branch.md)
-* [git分支管理策略](https://github.com/lvzhenbang/article/blob/master/git/git-branch-manage.md)
-* [git提交记录操作](https://github.com/lvzhenbang/article/blob/master/git/git-commit-manage.md)
-* [git合并分支（merge vs rebase）](https://github.com/lvzhenbang/article/blob/master/git/git-merge.md)
+* [git 从本地仓库到服务器](https://github.com/lvzhenbang/article/blob/master/git/git-local-server.md)
 * [git 技巧使用](https://github.com/lvzhenbang/article/blob/master/git/git-skills.md)
 
 </details>
 
+git相关的可视化工具有很多，最常见的，也是最方便的要数`github`。这些可视化的工具功能大同小异。
+
+注：学习使用`github`做好的[` 教程 `](https://lab.github.com/)。
+
 ### vue
+
+<details>
+
+<summary> 目录 </summary>
 
 * [vue-slot 模板应用](https://github.com/lvzhenbang/article/blob/master/vue/vue-slot.html)
 * [由路径参数引起的路由问题](https://github.com/lvzhenbang/article/blob/master/vue/route/path-param.md)
 * [深入理解vue之组件](https://github.com/lvzhenbang/article/blob/master/vue/doc/render.md)
+
+</details>
 
 ### html layout
 
@@ -47,6 +58,7 @@
 <details>
 <summary>目录</summary>
 
+* [js type](https://github.com/lvzhenbang/article/blob/master/js/type/index.md)
 * [js中的数组，数字，字符串反转](https://github.com/lvzhenbang/article/blob/master/js/js-reverse.md)
 * [两个数组之间的几种常见操作](https://github.com/lvzhenbang/article/blob/master/js/twoArry.md)
 * [给一个元素同时绑上click和dbclick事件所存在的问题详解](https://github.com/lvzhenbang/article/blob/master/js/single_double_click.md)
@@ -68,7 +80,6 @@
 * [漫谈javascript函数式编程](https://github.com/lvzhenbang/article/blob/master/js/functional-programing.md)
 * [漫谈promise使用场景](https://github.com/lvzhenbang/article/blob/master/js/promise.md)
 * [JavaScript继承几种方式理解](https://github.com/lvzhenbang/article/blob/master/js/js-inherit.md)
-
 
 </details>
 
@@ -93,18 +104,8 @@
 <details>
 <summary>目录</summary>
 
-* [高屋建瓴——设计模式](https://github.com/lvzhenbang/article/blob/master/design-pattern/index.md)
-* [面向对象的JavaScript](https://github.com/lvzhenbang/article/blob/master/design-pattern/oop-js.md)
-* [构造器 设计模式](https://github.com/lvzhenbang/article/blob/master/design-pattern/constructor.md)
-* [外观 设计模式](https://github.com/lvzhenbang/article/blob/master/design-pattern/facade.md)
-* [工厂 设计模式](https://github.com/lvzhenbang/article/blob/master/design-pattern/factory.md)
-* [观察者 设计模式](https://github.com/lvzhenbang/article/blob/master/design-pattern/observer.md)
-* [javascript 单例设计模式](https://github.com/lvzhenbang/article/blob/master/design-pattern/js-singleton.md)
-* [javascript 策略设计模式](https://github.com/lvzhenbang/article/blob/master/design-pattern/strategy.md)
-* [javascript 代理设计模式](https://github.com/lvzhenbang/article/blob/master/design-pattern/proxy-pattern.md)
-* [javascript 迭代器设计模式](https://github.com/lvzhenbang/article/blob/master/design-pattern/iterator.md)
-* [javascript 观察者模式](https://github.com/lvzhenbang/article/blob/master/design-pattern/js-observer.md)
-* [javascript 享元设计模式](https://github.com/lvzhenbang/article/blob/master/design-pattern/flyweight.md)
+* [` awesome-design-patterns `](https://github.com/DovAmir/awesome-design-patterns) 设计模式集锦，包含各种开发语言
+* [` essential-js-design-patterns `](https://github.com/addyosmani/essential-js-design-patterns) ` javascript `
 
 </details>
 
