@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide</title>
+    <style>
+        /* http://www.joelambert.co.uk/flux/ */
+        .slide {
+            position: relative;
+            overflow: hidden;
+            width: 500px;
+            height: 500px;
+            border: 1px solid #ccc;
+        }
+        .slide-wrapper {
+            width: 100%;
+            height: 100%;
+        }
+        .slide-item {
+            position: absolute;
+            top: 0;
+
+            width: 100%;
+            height: 100%;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 2rem;
+            color: #333;
+
+            transition: all ease .6s;
+
+            display: none;
+            visibility: hidden;
+            opacity: 0;
+
+            transition: transform ease-in-out .6s;
+        }
+        .slide-item.active {
+            display: flex;
+            visibility: visible;
+            opacity: 1;
+        }
+        .slide-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 3rem;
+            height: 3rem;
+            border: 1px solid #333;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .slide-prev {
+            left: 1rem;
+        }
+        .slide-next {
+            right: 1rem;
+        }
+        .slide-indicator {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+        }
+        .slide-indicator-item {
+            width: .5rem;
+            height: .5rem;
+            background-color: #ccc;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .slide-indicator-item+.slide-indicator-item {
+            margin-left: .15rem;
+        }
+        .slide-indicator-item:hover,
+        .slide-indicator-item.active {
+            background-color: #333;
+        }
+        /* bg-color */
+        .slide-item:nth-of-type(1) {
+            background-color: red;
+        }
+
+        .slide-item:nth-of-type(2) {
+            background-color: green;
+        }
+
+        .slide-item:nth-of-type(3) {
+            background-color: blue;
+        }
+
+        .slide-item:nth-of-type(4) {
+            background-color: yellow;
+        }
+
+        .slide-item:nth-of-type(5) {
+            background-color: purple;
+        }
+
+        .slide-item:nth-of-type(6) {
+            background-color: brown;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide" id="slide">
+        <div class="slide-wrapper">
+            <div class="slide-item">1</div>
+            <div class="slide-item">2</div>
+            <div class="slide-item">3</div>
+            <div class="slide-item">4</div>
+            <div class="slide-item">5</div>
+            <div class="slide-item">6</div>
+        </div>
+        <div class="slide-btn slide-prev">prev</div>
+        <div class="slide-btn slide-next">next</div>
+        <div class="slide-indicator"></div>
+    </div>
+    <script src="./jquery.js"></script>
+    <script>
+        var currIndex = 0;
+        var tempIndex = 0;
+        var $slideItem = $('#slide .slide-item');
+        var len = $slideItem.length;
+        var timer = null;
+        var duration = 2400; // min: 600;
+        var touchDelta = 0;
+        var touchStart = 0;
+        var isLoop = true;
+        var isPause = false;
+
+        function generateIndicator() {
+            var html = '';
+            for (var i = 0; i < len; i+= 1) {
+                html += '<div class="slide-indicator-item' + (currIndex == i ? ' active' : '') + '" data-order="'+ (i + 1) +'"></div>';
+            }
+            $('#slide .slide-indicator').html(html);
+            bindIndicatorEvent();
+        }
+
+        function bindIndicatorEvent() {
+            $('#slide .slide-indicator-item').on('click', function() {
+                pause();
+
+                tempIndex = $(this).data('order') || 1;
+                tempIndex -= 1;
+                
+                if (tempIndex != currIndex) {
+                    $('#slide .slide-indicator-item').removeClass('active');
+                    $(this).addClass('active');
+
+                    if (tempIndex > currIndex) {
+                        animateSlide(true);
+                    }
+
+                    if (tempIndex < currIndex)  {
+                        animateSlide(false);
+                    }
+                }
+            });
+        }
+        function updateIndicator() {
+            $('#slide .slide-indicator-item').removeClass('active').eq(tempIndex).addClass('active');
+        }
+        function animateSlide(flag) {
+            $slideItem.eq(tempIndex).addClass('active');
+            addSlideAnimate(flag);
+            updateIndicator();
+        }
+        function addSlideAnimate(flag) {
+            var $activeElement = $slideItem.eq(currIndex);
+            var $newElement = $slideItem.eq(tempIndex);
+            currIndex = tempIndex;
+            if (flag) {
+                $newElement.css({
+                    transform: 'translateX(100%)'
+                });
+            } else {
+                $newElement.css({
+                    transform: 'translateX(-100%)'
+                });
+            }
+            setTimeout(function() {
+                if (flag) {
+                    $activeElement.css({
+                        transform: 'translateX(-100%)'
+                    });
+                    $newElement.css({
+                        transform: 'translateX(0)'
+                    });
+                } else {
+                    $activeElement.css({
+                        transform: 'translateX(100%)'
+                    });
+                    $newElement.css({
+                        transform: 'translateX(0)'
+                    });
+                }
+            }, 100);
+            $activeElement.one('transitionend', function() {
+                $(this).removeClass('active').removeAttr('style');
+            });
+            $newElement.one('transitionend', function() {
+                $(this).addClass('active').removeAttr('style');
+                reStartCycle();
+            });
+        }
+        function getPrevItem() {
+            tempIndex = currIndex == 0 ? len - 1 : currIndex - 1;
+            return $slideItem.eq(tempIndex);
+        }
+        function getNextItem() {
+            tempIndex = currIndex == len - 1 ? 0 : currIndex + 1;
+            return $slideItem.eq(tempIndex);
+        }
+
+        function cycle() {
+            timer = setInterval(slideNext, duration);
+        }
+
+        function reStartCycle() {
+            if (isLoop && isPause) {
+               cycle();
+               isPause = false;
+            }
+        }
+
+        function pause() {
+            if (isLoop && !isPause) {
+                clearInterval(timer);
+                isPause = true;
+            }
+        }
+
+        function slidePrev() {
+            var $prevItem = getPrevItem();
+            animateSlide(false);
+        }
+
+        function slideNext() {
+            var $nextItem = getNextItem();
+            animateSlide(true);
+        }
+
+        function initSlide() {
+            $slideItem.eq(currIndex).addClass('active');
+            generateIndicator();
+            isLoop && cycle();
+        }
+
+        initSlide();
+
+        $('#slide .slide-prev').on('click', function() {
+            pause();
+            slidePrev();
+        });
+        $('#slide .slide-next').on('click', function() {
+            pause();
+            slideNext();
+        });
+        // event mouse
+        $('#slide').on('mouseenter', function() {
+            pause();
+        }).on('mouseleave', function() {
+            cycle();
+        });
+        // event touch
+        $('#slide .slide-wrapper').on('touchstart', function(e) {
+            pause();
+            touchStart = e.originalEvent.touches[0].clientX;
+        }).on('touchmove', function(e) {
+            touchDelta = e.originalEvent.touches[0].clientX - touchStart;
+        }).on('touchend', function(e) {
+            if (Math.abs(touchDelta) > 100) {
+                if (touchDelta < 0) {
+                    slideNext();
+                } else {
+                    slidePrev();
+                }
+            }
+            touchDelta = touchStart = 0;
+        });
+    </script>
+</body>
+</html>

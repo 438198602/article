@@ -11,11 +11,10 @@
 * [git 常用命令](https://github.com/lvzhenbang/article/blob/master/git/git-command.md)
 * [git 分支操作](https://github.com/lvzhenbang/article/blob/master/git/git-branch.md)
 * [git 提交记录操作](https://github.com/lvzhenbang/article/blob/master/git/git-commit.md)
-* [git merge vs rebase）](https://github.com/lvzhenbang/article/blob/master/git/git-merge.md)
+* [git merge vs rebase](https://github.com/lvzhenbang/article/blob/master/git/git-merge.md)
 * [git 打标签](https://github.com/lvzhenbang/article/blob/master/git/git-tag.md)
 * [git repository](https://github.com/lvzhenbang/article/blob/master/git/git-repository.md)
-* [git 从本地仓库到服务器](https://github.com/lvzhenbang/article/blob/master/git/git-local-server.md)
-* [git 技巧使用](https://github.com/lvzhenbang/article/blob/master/git/git-skills.md)
+* [git 从本地仓库到远程仓库](https://github.com/lvzhenbang/article/blob/master/git/git-local-server.md)
 
 </details>
 
@@ -58,7 +57,7 @@ git相关的可视化工具有很多，最常见的，也是最方便的要数`g
 <details>
 <summary>目录</summary>
 
-* [js type](https://github.com/lvzhenbang/article/blob/master/js/type/index.md)
+* [js 常用判断及扩展](https://github.com/lvzhenbang/article/blob/master/js/check/index.md)
 * [js中的数组，数字，字符串反转](https://github.com/lvzhenbang/article/blob/master/js/js-reverse.md)
 * [两个数组之间的几种常见操作](https://github.com/lvzhenbang/article/blob/master/js/twoArry.md)
 * [给一个元素同时绑上click和dbclick事件所存在的问题详解](https://github.com/lvzhenbang/article/blob/master/js/single_double_click.md)

@@ -1,4 +1,4 @@
-# JavaScript 自己提供的乐行判断
+# JavaScript 类型判断分析
 
 ## typeof
 
@@ -22,7 +22,7 @@ undefined：
 
 null:
 
-	typeof null; // "undefined" (特别)
+	typeof null; // "object" (特别)
 
 object:
 	
